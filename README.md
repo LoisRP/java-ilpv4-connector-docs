@@ -25,9 +25,8 @@ This implementation supports the following features:
 
 To learn more about how this implementation is designed, see [Connector Design](concepts/architecture-design.md).
 
-To contribute to this project read more in [Connector Development](contributing/development.md).
+To contribute to this project, read more in [Connector Development](contributing/development.md).
 
 ## Disclaimer
 
 **WARNING:** _**This implementation is currently an "alpha" prototype and SHOULD NOT be used in a production deployment!**_
-

@@ -2,7 +2,7 @@
 
 _**Note: These steps were taken from**_ [_**Secure Spring Boot Applications with TLS and HTTP/2**_](https://blog.novatec-gmbh%20.de/spring-boot-applications-tls-http2/)_**. All Keys and CAs in these folders are provided for example purposes only and SHOULD not be used for any production purposes other than demonstrating capabilities.**_
 
-## Setting up a private Certificate Authority \(CA\)
+## Set up a private Certificate Authority \(CA\)
 
 ### Certificate for Root CA
 
@@ -46,7 +46,7 @@ keytool -importcert -noprompt -keystore ./server/server.jks -storepass secret -a
 
 ## Configure TLS in Spring Boot
 
-To enable TLS put the following entries into your application.properties file.
+To enable TLS, put the following entries into your `application.properties` file.
 
 ```text
 server.port=8443
@@ -58,11 +58,10 @@ server.ssl.key-alias=localhost
 server.ssl.key-password=secret
 ```
 
-With these property entries you will change the following behavior:
+With these property entries, the following application behavior changes:
 
-* The application is started on port 8443 instead of port 8080 \(by convention this is the usual port for HTTPS connections\).
-* Use our new java key store server.jks which is of type PKCS12 and is opened with given store password
-* Define the alias of public/private key to use for the server certificate with corresponding key password
+* The application is started on port 8443 instead of port 8080 \(by convention, 8080 is the usual port for HTTPS connections\).
+* The application uses our new java key store `server.jks` which is of type PKCS12 and is opened with the given store password.
+* The application defines the alias of the public/private key to use for the server certificate with the corresponding key password.
 
-Important: Please do not forget to copy the java key store file server.jks you have created in previous section into the src/main/resource folder of the new spring boot application.
-
+Important: Remember to copy the java key store file `server.jks` you have created in the previous section into the src/main/resource folder of the new spring boot application.

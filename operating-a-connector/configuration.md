@@ -7,9 +7,10 @@ description: Knobs and switches to adjust before your Connector starts up.
 Runtime configuration of this Connector is obtained from a variety of potential sources when the connector starts up. This includes property files, environment variables, system properties and more, per the precedence defined by [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 For example, any of the following configuration settings can be overridden at runtime by setting a system or environment variable, or by supplying a runtime switch to the JVM. For example: `-Dredis.host=localhost`.
+<!-- Do you mean any of the following Global Configuration Properties? -->
 
 {% hint style="success" %}
-We recommend creating a file called `application.yml` and putting all of your default configuration in there.
+We recommend that you create a file called `application.yml`, and that you place all of your default configuration settings in that file.
 {% endhint %}
 
 ## Global Configuration Properties
@@ -46,7 +47,7 @@ The Connector supports storing keys and secrets in a [Java Keystore](https://en.
 * `enabled`: Enables or disables this keystore.
 * `filename`: A filename for the JKS file \(this file needs to be on the classpath\).
 * `password`: The password required to open the JKS file.
-* `secret0_alias`: The alias name of they secret that is used by the Connector to encrypt, decrypt, and HMAC all other secret values.
+* `secret0_alias`: The alias name of the secret that is used by the Connector to encrypt, decrypt, and HMAC all other secret values.
 * `secret0_password`: The password required to unlock the `secret0` alias in the Keystore.
 
 {% code title="application.yml" %}
@@ -117,11 +118,11 @@ interledger:
 
 #### Redis
 
-Redis is used to track balances for every account operated by this Connector. The following properties may be used to configure Reds:
+Redis is used to track balances for every account operated by this Connector. The following properties may be used to configure Redis:
 
 * `spring.redis.host`: \(Default: `localhost`\) The host that Redis is operating on.
-* `spring.redis.port`: \(Default: `6379`\) The port that Redis is operating on. 
-* `spring.redis.password`: \(Default: none\) An encrypted password String containing the password that can be used access Redis.
+* `spring.redis.port`: \(Default: `6379`\) The port that Redis is operating on.
+* `spring.redis.password`: \(Default: none\) An encrypted password string that contains the password that can be used to access Redis.
 
 In the `application.yml` file, a sample configuration might look like this:
 
@@ -134,7 +135,7 @@ spring:
 ```
 
 {% hint style="danger" %}
-The Redis password should be encrypted, especially if it will reside in a property file per the above example. To generate this encrypted value, you can use the Connector Crypto CLI. 
+The Redis password should be encrypted, especially if it will reside in a property file per the above example. To generate this encrypted value, you can use the Connector Crypto CLI.
 
 For more details, read more in [Connector Crypto](../security-guide/crypto.md).
 {% endhint %}
@@ -147,8 +148,8 @@ Postgres can be used to store all non-balance tracking information, including ac
 
 In addition, the following two properties can be used to supply the Connector with Authentication credentials to connect to the database:
 
-* `spring.datasource.username` \(Default: `postgres`\) The username to connect to the database as.
-* `spring.datasource.password` The password to connect to the database as.
+* `spring.datasource.username` \(Default: `postgres`\) The username to connect to the database.
+* `spring.datasource.password` The password to connect to the database.
 
 In the `application.yml` file, a sample configuration might look like this:
 
@@ -158,12 +159,12 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/connector_db
     username: postgres
-    password: 
+    password:
 ```
 {% endcode %}
 
 {% hint style="danger" %}
-If no security credentials are not required by your database, then the `username` and `password` properties may be omitted. **However, such a configuration is not recommended**.
+If no security credentials are required by your database, then the `username` and `password` properties may be omitted. **However, such a configuration is not recommended**.
 {% endhint %}
 
 ### HTTP Client Properties
@@ -179,7 +180,7 @@ The root configuration key for Settlement Engine clients is: **`interledger.conn
 * **`maxIdleConnections`**: The maximum number of idle connections that the underlying OkHttp client will hold open with no traffic flowing through them \(Default: `5`_\)._
 * **`keepAliveMinutes`**: The number of minutes to hold an inactive HTTP connection open before evicting the connection from the connection pool \(Default: `5 mins`\).
 * **`connectTimeoutMillis`**: Applied when connecting a TCP socket to the target host. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `10000`\).
-* **`readTimeoutMillis`**: Applied to both the TCP socket and for individual read IO operations. A value of 0 means no timeout, otherwise values must be between 1 `Integer#MAX_VALUE` \(Default: `30000`\).
+* **`readTimeoutMillis`**: Applied to both the TCP socket and for individual read IO operations. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `30000`\).
 * **`writeTimeoutMillis`**: Applied to individual write IO operations. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `30000`\).
 
 In the `application.yml` file, a sample configuration might look like this:
@@ -209,7 +210,7 @@ The root configuration key for Settlement Engine clients is: **`interledger.conn
 * **`maxIdleConnections`**: The maximum number of idle connections that the underlying OkHttp client will hold open with no traffic flowing through them \(Default: `5`_\)._
 * **`keepAliveMinutes`**: The number of minutes to hold an inactive HTTP connection open before evicting the connection from the connection pool \(Default: `5 mins`\).
 * **`connectTimeoutMillis`**: Applied when connecting a TCP socket to the target host. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `10000`\).
-* **`readTimeoutMillis`**: Applied to both the TCP socket and for individual read IO operations. A value of 0 means no timeout, otherwise values must be between 1 `Integer#MAX_VALUE` \(Default: `60000`\).
+* **`readTimeoutMillis`**: Applied to both the TCP socket and for individual read IO operations. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `60000`\).
 * **`writeTimeoutMillis`**: Applied to individual write IO operations. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `60000`\).
 
 In the `application.yml` file, a sample configuration might look like this:
@@ -237,9 +238,9 @@ The root configuration key for Http FX clients is: **`interledger.connector.fx`*
 {% endhint %}
 
 * **`maxIdleConnections`**: The maximum number of idle connections that the underlying OkHttp client will hold open with no traffic flowing through them \(Default: `5`_\)._
-* **`keepAliveMinutes`**: The number of minutes to hold an inactive HTTP connection open before evicting the connection from the connection pool \(Default: `5 mins`\).
+* **`keepAliveMinutes`**: The number of minutes to hold an inactive HTTP connection open before evicting the connection from the connection pool \(Default: `5 mins`\). <!-- I think you mean to just use the numeric value without mins? -->
 * **`connectTimeoutMillis`**: Applied when connecting a TCP socket to the target host. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `10000`\).
-* **`readTimeoutMillis`**: Applied to both the TCP socket and for individual read IO operations. A value of 0 means no timeout, otherwise values must be between 1 `Integer#MAX_VALUE` \(Default: `60000`\).
+* **`readTimeoutMillis`**: Applied to both the TCP socket and for individual read IO operations. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `60000`\).
 * **`writeTimeoutMillis`**: Applied to individual write IO operations. A value of 0 means no timeout, otherwise values must be between 1 and `Integer#MAX_VALUE` \(Default: `60000`\).
 
 In the `application.yml` file, a sample configuration might look like this:
@@ -262,7 +263,7 @@ interledger:
 
 The connector uses key aliases and versions to determine what to use when handling encrypted shared secrets such as those for incoming and outgoing account settings links.
 
-Following keys are configurable:
+The following keys are configurable:
 
 * `secret0`: Master encryption key for the connector.
 * `accountSettings`: Encryption key for account settings shared secrets.
@@ -288,18 +289,18 @@ interledger:
         version: 1
 ```
 
-The connector makes use of keys to encrypt and decrypt shared secrets. By default, the plain text value of a shared secret must be 32 bytes but this can be 
+The connector makes use of keys to encrypt and decrypt shared secrets. By default, the plain text value of a shared secret must be 32 bytes but this value can be configured.
 
 ### Spring Profiles
 
 Several Spring profiles are available to make it easier to enable certain features:
 
 * **migrate**: runs database migrations \(via liquibase\) before connector is started
-* **migrate-only**: only runs database migrations \(via liquibase\) but does not start the connector \(application will terminate after migrations complete\)
+* **migrate-only**: only runs database migrations \(via liquibase\), but does not start the connector \(application will terminate after migrations complete\)
 * **management**: enables the Spring management endpoints
 * **h2**: enables hypersonic in-memory SQL database
 
-These profiles can be enabled by from the command-line using `-Dspring.profiles.active=h2,management,...`, via an environment variable `SPRING_PROFILES_ACTIVE=h2,management,...` or by adding the following to your application.yaml:
+These profiles can be enabled from the command-line using `-Dspring.profiles.active=h2,management,...`, via an environment variable `SPRING_PROFILES_ACTIVE=h2,management,...` or by adding the following to your application.yaml:
 
 {% code title="application.yaml" %}
 ```yaml
@@ -308,4 +309,3 @@ spring:
     active: h2,management,...
 ```
 {% endcode %}
-

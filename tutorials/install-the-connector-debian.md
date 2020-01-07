@@ -6,7 +6,7 @@ description: Guides you how to install the Connector on Debian
 
 ## Prerequisites
 
-Before installing the Connector, you must first install some supporting software.
+Before you install the Connector, you must first install some supporting software.
 
 {% hint style="info" %}
 Be sure to interact with the command shell when executing the commands above. At various points, most of the following scripts will require you to enter `Y` to continue the installation process.
@@ -23,13 +23,13 @@ sudo apt-get install unzip
 
 ### Install OpenJDK 8
 
-The Java Connector should build and run using Java version 8 or higher. You can use the following command to determine which version of the JDK is installed in your runtime via the following commnad:
+The Java Connector should build and run using Java version 8 or higher. You can use the following command to determine which version of the JDK is installed in your runtime via the following command:
 
 ```text
 dpkg -s default-jdk | grep Depends
 ```
 
-For example, Debian 18.04 comes preinstalled with JDK 11. However, if you're image doesn't have a JDK installed, then use the following script to install OpenJDK 8:
+For example, Debian 18.04 comes preinstalled with JDK 11. However, if your image doesn't have a JDK installed, then use the following script to install OpenJDK 8:
 
 {% code title="installOpenJdk8.sh" %}
 ```bash
@@ -54,7 +54,7 @@ sudo mv -f /tmp/UnlimitedJCEPolicyJDK8/local_policy.jar $JAVA_HOME/jre/lib/secur
 ```
 {% endcode %}
 
-## Download & Build 
+## Download & Build
 
 In order to install the connector, you must download the source and build it.
 
@@ -68,10 +68,9 @@ mv  /srv/java-ilpv4-connector/ilpv4-connector-server/target/ilpv4-connector-serv
 ```
 
 {% hint style="info" %}
-Once the connector has its first official release, it will not be necessary to download and build the connector. Instead, you will be able to simply download a single executable and run that directly.
+Once the connector has its first official release, it will not be necessary to download and build the connector. Instead, you will be able to download a single executable and run that directly.
 {% endhint %}
 
 {% hint style="success" %}
 And that's it! You've successfully installed the Connector!
 {% endhint %}
-

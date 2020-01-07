@@ -10,7 +10,7 @@ description: >-
 
 This implementation classifies persistence data into two broad categories: data collected during performance-sensitive operations, and all other data.
 
-Data collected during performance-sensitive operations is limited to the data required to facilitate the ILPv4 packet flow. In general, this type of data is limited to balance tracking information, and this implementation supports both Redis and Postgres for this use-case. 
+Data collected during performance-sensitive operations is limited to the data required to facilitate the ILPv4 packet flow. In general, this type of data is limited to balance tracking information, and this implementation supports both Redis and Postgres for this use-case.
 
 All other data, such as non-balance account configuration, runtime configuration, and more is stored into one of several supported RDBMS datastores. This implementation currently supports [Posgresql](https://www.postgresql.org/), [MS-SQL](https://www.microsoft.com/en-us/sql-server/default.aspx), [MySQL](https://www.mysql.com/), and [Oracle](https://www.oracle.com/database/12c-database/).
 
@@ -23,7 +23,7 @@ This page details how to initialize a given persistence store for usage by the C
 This section details how to use Postgresql as the underlying Router datastore.
 
 {% hint style="success" %}
-This section assumes that you have created a database named `connector`inside of your Postgres installation. Note that this naming is used as an example only -- you can choose _any_ database name.
+This section assumes that you have created a database named `connector` inside of your Postgres installation. Note that this naming is used as an example only -- you can choose _any_ database name.
 {% endhint %}
 
 ### Generate DDL
@@ -34,11 +34,11 @@ To generate the DDL for the Connector database, execute the following commands:
 mvn -DskipTests clean package -P liquibase-pg-sql liquibase:updateSQL
 ```
 
-This will emit a file `/target/liquibase/migrate.sql` that can be used to populate your database. 
+This will emit a file `/target/liquibase/migrate.sql` that can be used to populate your database.
 
 ### Direct Initialization via Maven
 
-As an alternative during development, you can utilize the liquibase-maven-plugin to directly connect to  Postgres and initialize the database for you. 
+As an alternative during development, you can utilize the liquibase-maven-plugin to directly connect to Postgres and initialize the database for you.
 
 However, for this to work, you first need to update the `pom.xml` file in the `ilpv4-connector-persistence` module to conform to your connection parameters by setting the `configuration.url` to a value for your environment, like this:
 
@@ -86,4 +86,3 @@ _Coming soon._
 ## Redis
 
 Redis is only used for balance tracking, so outside of configuring [runtime configuration properties](configuration.md), no further initialization is required.
-

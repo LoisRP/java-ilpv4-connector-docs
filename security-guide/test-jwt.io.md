@@ -1,6 +1,6 @@
 # test-jwt.io
 
-This file contains information that can be plugged-into [https://jwt.io](https://jwt.io) in order to experiment with token-types currently used by the BLAST \(ILP-over-HTTP\) protocol in this implementaiton:
+This file contains information that can be plugged into [https://jwt.io](https://jwt.io) in order to experiment with token-types currently used by the BLAST \(ILP-over-HTTP\) protocol in this implementation:
 
 ## Headers
 
@@ -21,4 +21,3 @@ This file contains information that can be plugged-into [https://jwt.io](https:/
   "iat": 1556751813
 }
 ```
-

@@ -6,7 +6,7 @@ description: 'Connect to a peer using ILP, HTTP, and some love...'
 
 ## Overview
 
-This guide instructs you how to setup a peering relationship between two Connectors \(i.e., `alice` and `bob`\) and also verify connectivity in both directions using the ILP Ping. 
+This guide instructs you how to set up a peering relationship between two Connectors \(i.e., `alice` and `bob`\) and also verify connectivity in both directions using the ILP Ping.
 
 For example, to verify connectivity from Alice to Bob, the `test.alice.peter` account is used to ping Bob at `test.bob`. Likewise, to verify connectivity from Bob to Alice, the `test.bob.pauline` account is used to ping Alice at `test.alice`.
 
@@ -16,10 +16,10 @@ This guide assumes the following network topology:
 
 ## Considerations
 
-In order to create an actual Interledger peering relationship, you would need to determine the financial details of the relationship beforehand. This includes:
+In order to create an actual Interledger peering relationship, you must determine the financial details of the relationship beforehand. These details include:
 
 * Will this account be settled? If so, determine the `settle_threshold` and `settle_to` values \(this will affect how you want to limit what you owe the peer\).
-* The amount credit to extend to your peer. This will be the `min_balance` value.
+* The amount of credit to extend to your peer. This will be the `min_balance` value.
 * The currency unit you will use to denominate the account relationship. This guide will use `USD` in all examples.
 * See [Account Configuration]() for more details.
 
@@ -86,14 +86,14 @@ The following payload illustrates the details of this account:
 ```
 
 {% hint style="danger" %}
-Note that the `shared_secret` above is encrypted using default keys packaged with the Connector in a Java Keystore \(JKS\) file meant for illustration purposes only.  The decrypted shared secret value is **`shh`** but in a real deployment, you _should_ use a strong shared secret and a new set of keys.   
-  
+Note that the `shared_secret` above is encrypted using default keys packaged with the Connector in a Java Keystore \(JKS\) file meant for illustration purposes only. The decrypted shared secret value is **`shh`**. In a real deployment, you _should_ use a strong shared secret and a new set of keys.   
+
 See [Connector Security](../security-guide/crypto.md) for more details.
 {% endhint %}
 
 ### Create Account: \`peter\`
 
-The following is a sample payload that can be used to create an account for Peter on the Alice Connector:
+The following sample payload can be used to create an account for Peter on the Alice Connector:
 
 ```javascript
 {
@@ -120,7 +120,7 @@ The following is a sample payload that can be used to create an account for Pete
 ```
 
 {% hint style="info" %}
-Note that the client authenticating as "Peter" may not be an HTTP server. In this case, Alice won't be able to send ILP packets to Peter. However, ILP-over-HTTP will still work from Peter to Alice as long as Alice is operating an ILP-over-HTTP server endpoint.
+Note that the client authenticating as "Peter" might not be an HTTP server. In this case, Alice won't be able to send ILP packets to Peter. However, ILP-over-HTTP will still work from Peter to Alice as long as Alice is operating an ILP-over-HTTP server endpoint.
 {% endhint %}
 
 ## Configuration on Bob
@@ -129,7 +129,7 @@ Note that the client authenticating as "Peter" may not be an HTTP server. In thi
 
 In order to peer with the Alice Connector, we must likewise tell Bob about Alice. This is done by creating an account for Alice on Bob.
 
-The following payload illustrates the details of this account:
+The following sample payload illustrates the details of this account:
 
 ```javascript
 {
@@ -185,11 +185,10 @@ The following payload illustrates the details of this account:
 
 ## Verify Connectivity
 
-The administrator of the peer account should create an account for your Connector. The details should be a loose inversion of the above request. For example, from the perspective of your Peer's Connector, teh `blast.outgoing.url` will be your URL.
+The administrator of the peer account should create an account for your Connector. The details should be a loose inversion of the above request. For example, from the perspective of your Peer's Connector, the `blast.outgoing.url` will be your URL.
 
 ### Ping Bob
 
 ### Ping Alice
 
 In order to verify that connectivity is correctly established, you need a separate account on your Connector that will allow you to send ping packets to the Peer.
-

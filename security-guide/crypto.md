@@ -1,6 +1,6 @@
 # Connector Crypto
 
-This Connector implementation supports various mechanism to support Encryption and Signing operations.
+This Connector implementation supports various mechanisms to support Encryption and Signing operations.
 
 ## Keystores
 
@@ -30,4 +30,3 @@ Finally, make sure the JKS file `crypto.pkcs12` is added to the runtime classpat
 ### Google GCP
 
 ### Vault
-
